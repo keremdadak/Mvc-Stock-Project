@@ -1,0 +1,24 @@
+﻿@model MvcStok.Models.Entity.tbl_Customers
+@{
+    ViewBag.Title = "CustomerGet";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("CustomerUpdate", "Customer", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer_ID)
+        @Html.TextBoxFor(m=>m.Customer_ID, new {@class="form-control" })
+        <br />
+        @Html.LabelFor(m=>m.Customer_Name)
+        @Html.TextBoxFor(m=>m.Customer_Name,new {@class="form-control" })
+        <br />
+        @Html.LabelFor(m=>m.Customer_Surname)
+        @Html.TextBoxFor(m=>m.Customer_Surname,new {@class="form-control" })
+
+    </div>
+    <div>
+        <button class="btn btn-warning">Müşteriyi Güncelle</button>
+    </div>
+}

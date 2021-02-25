@@ -1,0 +1,40 @@
+﻿@using MvcStok.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<tbl_Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered" id="dtcategory">
+    <thead>
+        <tr>
+            <th>Kategori ID</th>
+            <th>Kategori Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ktgr in Model)
+        {
+        <tr>
+            <td>@ktgr.Category_ID</td>
+            <td>@ktgr.Category_Name</td>
+            @*<td><a href="/Category/DeleteCategory/@ktgr.Category_ID" class="btn btn-danger">Sil</a></td>*@
+            <td>@Html.ActionLink("Sil", "DeleteCategory", new { id = ktgr.Category_ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz? ')" })</td>
+            <td><a href="/Category/CategoryGet/@ktgr.Category_ID" class="btn btn-success">Güncelle</a></td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+<a href="/Category/NewCategory" class="btn btn-primary">Yeni Kategori</a>
+
+<link href="~/Content/DataTables/css/fixedColumns.bootstrap4.css" rel="stylesheet" />
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script>
+    $('#dtcategory').dataTable();
+</script>

@@ -1,0 +1,37 @@
+﻿@model MvcStok.Models.Entity.tbl_Product
+
+@{
+    ViewBag.Title = "ProductGet";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("ProductUpdate", "Product", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.Product_ID)
+    @Html.TextBoxFor(m => m.Product_ID, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Product_Name)
+    @Html.TextBoxFor(m => m.Product_Name, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Product_Brand)
+    @Html.TextBoxFor(m => m.Product_Brand, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Product_Category)
+    @Html.DropDownListFor(m => m.tbl_Category.Category_ID,
+  (List<SelectListItem>)ViewBag.dgr, new
+  {
+      @class = "form-control"
+  })
+    @Html.LabelFor(m => m.Product_Price)
+    @Html.TextBoxFor(m => m.Product_Price, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Product_Stock)
+    @Html.TextBoxFor(m => m.Product_Stock, new { @class = "form-control" })
+
+
+</div>
+    <div>
+        <button class="btn btn-warning">Kategoriyi Güncelle</button>
+    </div>
+}

@@ -1,0 +1,20 @@
+﻿@model MvcStok.Models.Entity.tbl_Category
+@{
+    ViewBag.Title = "CategoryGet";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using(Html.BeginForm("CategoryUpdate","Category",FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m=>m.Category_ID)
+        @Html.TextBoxFor(m=>m.Category_ID,new {@class="form-control" })
+
+        @Html.LabelFor(m=>m.Category_Name)
+        @Html.TextBoxFor(m => m.Category_Name, new {@class="form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Kategoriyi Güncelle</button>
+    </div>
+}
+

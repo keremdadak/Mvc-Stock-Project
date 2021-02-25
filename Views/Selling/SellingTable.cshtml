@@ -1,0 +1,42 @@
+﻿@using MvcStok.Models.Entity
+@model List<tbl_Selling>
+@{
+    ViewBag.Title = "SellingTable";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered" id="dtsell">
+    <thead>
+        <tr>
+            <th>Satış ID</th>
+            <th>Ürün</th>
+            <th>Müşteri</th>
+            <th>Sayı</th>
+            <th>Fiyat</th>
+            <th>Sil</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sell in Model)
+        {
+            <tr>
+                <td>@sell.Sell_ID</td>
+                <td>@sell.Product</td>
+                <td>@sell.Customer</td>
+                <td>@sell.Count</td>
+                <td>@sell.Price</td>
+
+                <td><a href="/Selling/DeleteSelling/@sell.Sell_ID" class="btn btn-danger">Sil</a></td>
+               
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<link href="~/Content/DataTables/css/fixedColumns.bootstrap4.css" rel="stylesheet" />
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script>
+    $('#dtsell').dataTable();
+</script>

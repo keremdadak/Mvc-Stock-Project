@@ -1,0 +1,40 @@
+﻿@model MvcStok.Models.Entity.tbl_Selling
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div style="margin-top:1%">
+    @Html.ActionLink("Satışları Göster", "SellingTable", null, new { @class = "btn btn-info" })
+</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1" style="margin-top:15px">
+    Satış Yap
+</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Satış Yapma Ekranı</h2>
+            </div>
+            <form method="post" action="/Selling/NewSelling">
+                <div class="modal-body">
+                    <label>Ürün Adı</label>
+                    @Html.TextBoxFor(m => m.Product, new { @class = "form-control" })
+                    <br />
+                    <label>Müşteri Adı Soyadı</label>
+                    @Html.TextBoxFor(m => m.Customer, new { @class = "form-control" })
+
+                    <br />
+                    <label>Ürün Adeti</label>
+                    @Html.TextBoxFor(m => m.Count, new { @class = "form-control" })
+                    <br />
+                    <label>Ürün Fiyatı</label>
+                    @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                    <br />
+                    <button type="submit" class="btn btn-info">Satış işlemini yap</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Geri Dön</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
